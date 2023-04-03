@@ -1,0 +1,76 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.notice_board.mapper.BoardMapper">
+	<insert id="insertBoard" parameterType="Board">
+		<selectKey keyProperty="num" resultType="_int"
+			order="BEFORE">
+			select notice_spring_board_seq.nextval from dual
+		</selectKey>
+
+			insert into notice_spring_board(num,name,passwd,subject,
+			content,wdate,readnum,
+			filename,originFilename,filesize,refer,lev,sunbun)
+			values(#{num},#{name},#{passwd},#{subject},#{content:VARCHAR},SYSDATE,#{readnum},
+			#{filename:VARCHAR},#{originFilename:VARCHAR},#{filesize:NUMERIC},#{num},#{lev},#{sunbun})
+
+	</insert>
+	
+	
+	
+	
+	notice_board 리스트 띄우기 1차 작성
+	<select id="selectBoardAll" resultType="Board" parameterType="map">
+		select * from notice_spring_board order by num desc
+	</select>
+	
+	글번호에 해당하는 글 가져오기
+	<select id="selectBoardByIdx" resultType="Board" parameterType="_int">
+		select * from notice_spring_board where num=#{value}
+	</select>
+	
+	글번호에 해당하는 글 삭제
+	<delete id="deleteBoard" parameterType="int">
+		delete from notice_spring_board where num=#{value}
+	</delete>
+	
+	글번호에 해당하는 글 수정
+	<update id="updateBoard" parameterType="Board">
+		update notice_spring_board set name=#{name},subject=#{subject},
+		content=#{content:VARCHAR}, passwd=#{passwd}
+		
+		<if test="filename!=null and filename!=''">
+		, filename=#{filename}, filesize=#{filesize},
+		originFilename=#{originFilename}
+		
+		</if>
+		<where>
+			num=#{num}
+		</where>
+	</update>
+	
+	<update id="noticeControl" parameterType="int">
+		update numbu set noticeNum=#{value}
+		<where>
+			num=1
+		</where>
+	</update>
+	
+	
+	<select id="noticeSelect" resultType="int">
+		select noticeNum num from numbu where num=1
+	</select>
+	
+	<select id="noticeCount" resultType="int">
+		select nvl(count(num),0) from numbu
+	</select>
+	<insert id="noticeInsert" parameterType="int">
+		Insert into MULTI1.numbu (num,noticeNum) values (1,#{value})
+	</insert>
+	
+	글번호에 해당하는 공지 삭제
+	<delete id="deleteNotice" parameterType="int">
+		delete from numbu where num=1
+	</delete>
+	
+</mapper> -->
