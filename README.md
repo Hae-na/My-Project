@@ -23,6 +23,3 @@ https://user-images.githubusercontent.com/129703900/229391797-1dbbb7fa-dae2-4fe0
 - CRUD
 - 조회수 증가
 - 페이지 핸들러 
-
-★★ war파일이 필요하시면 제 이메일로 메일보내주시면 보내드리겠습니다! ★★
-★★★ [ dearhaenalee@gmail.com ] ★★★
